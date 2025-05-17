@@ -78,4 +78,8 @@
     .highlight-grid {
         gap: 2em;
     }
+    .highlight-card img:hover {
+        transform: none;
+        z-index: auto;
+    }
 }
