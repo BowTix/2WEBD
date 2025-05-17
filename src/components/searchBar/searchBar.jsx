@@ -10,7 +10,7 @@ const SearchBar = () => {
 
     const handleSearch = () => {
         if (query.trim() !== '') {
-            navigate(`/search?query=${encodeURIComponent(query)}`);
+            navigate(`/search?q=${encodeURIComponent(query)}`);
         }
     };
 

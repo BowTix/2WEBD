@@ -1,21 +1,38 @@
 import { useEffect, useState } from 'react';
-import {Link, useSearchParams} from 'react-router-dom';
+import { Link, useSearchParams } from 'react-router-dom';
 
 const SearchResults = () => {
     const [searchParams] = useSearchParams();
     const [results, setResults] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
-    const query = searchParams.get('query');
+
+    const query = searchParams.get('q') || searchParams.get('query') || '';
 
     useEffect(() => {
         const fetchResults = async () => {
             try {
                 setLoading(true);
-                const searchRes = await fetch(`https://collectionapi.metmuseum.org/public/collection/v1/search?q=${encodeURIComponent(query)}&hasImages=true`);
+
+                const apiParams = new URLSearchParams();
+
+                // On ajoute tous les paramètres pertinents
+                for (const [key, value] of searchParams.entries()) {
+                    if (value) {
+                        apiParams.append(key, value);
+                    }
+                }
+
+                // S'assurer que 'q' est bien présent
+                if (!apiParams.get('q')) {
+                    apiParams.set('q', query);
+                }
+
+                const searchUrl = `https://collectionapi.metmuseum.org/public/collection/v1/search?${apiParams.toString()}`;
+                const searchRes = await fetch(searchUrl);
                 const searchData = await searchRes.json();
 
-                if (searchData.total === 0) {
+                if (!searchData.objectIDs || searchData.objectIDs.length === 0) {
                     setResults([]);
                     setLoading(false);
                     return;
@@ -39,7 +56,7 @@ const SearchResults = () => {
         if (query) {
             fetchResults();
         }
-    }, [query]);
+    }, [searchParams, query]);
 
     if (loading) return <p>Chargement...</p>;
     if (error) return <p>{error}</p>;
@@ -54,7 +71,13 @@ const SearchResults = () => {
                     {results.map(item => (
                         <li key={item.objectID}>
                             <h2>{item.title}</h2>
-                            {item.primaryImageSmall && <img src={item.primaryImageSmall} alt={item.title} style={{ maxWidth: '200px' }} />}
+                            {item.primaryImageSmall && (
+                                <img
+                                    src={item.primaryImageSmall}
+                                    alt={item.title}
+                                    style={{ maxWidth: '200px' }}
+                                />
+                            )}
                             <p>{item.artistDisplayName}</p>
                             <p>{item.objectDate}</p>
                             {item.objectURL ? (

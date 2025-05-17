@@ -37,7 +37,7 @@
     top: 50%;
     transform: translateY(-50%);
     border-radius: 999px;
-    color: #07051a;
+    color: var(--onyx);
     font-size: 1em;
     transition: all 1s;
 }
@@ -58,8 +58,8 @@
 .search-form:hover .fa, 
 .search-form:focus-within .fa,
 .search-form:valid .fa {
-    background: #07051a;
-    color: white;
+    background: var(--black);
+    color: var(--white);
 }
 
 @media (max-width: 600px){

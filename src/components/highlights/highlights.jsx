@@ -25,6 +25,7 @@ const Highlight = () => {
     }, []);
 
     return (
+        <>
         <section className="highlight-section">
             <h2>Œuvres à la une...</h2>
             <div className="highlight-grid">
@@ -46,6 +47,12 @@ const Highlight = () => {
                 ))}
             </div>
         </section>
+        <section>
+            <div>
+                <Link to={`/advanced-search`}>Recherche avancée</Link>
+            </div>
+        </section>
+        </>
     );
 };
 
