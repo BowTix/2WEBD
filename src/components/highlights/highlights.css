@@ -73,6 +73,9 @@
 }
 
 @media (max-width: 600px) {
+    .highlight-section h2 {
+        margin-bottom: 1em;
+    }
     .highlight-section{
         margin: 0;
     }
