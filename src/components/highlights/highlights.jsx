@@ -25,6 +25,7 @@ const Highlight = () => {
     }, []);
 
     return (
+        <>
         <section className="highlight-section">
             <h2>Articles à la une...</h2>
             <div className="highlight-grid">
@@ -32,7 +33,7 @@ const Highlight = () => {
                     <div className="highlight-card" key={art.objectID}>
                         <img src={art.primaryImageSmall} alt={art.title} />
                         <hr/>
-                            <div class="highlight-card-info">
+                            <div className="highlight-card-info">
                             <h3>{art.title}</h3>
                             <p>Par {art.artistDisplayName || "Unknown Artist"}</p>
                             <p>{art.objectDate || "Unknown Date"}</p>
@@ -46,6 +47,12 @@ const Highlight = () => {
                 ))}
             </div>
         </section>
+        <section>
+            <div>
+                <Link to={`/advanced-search`}>Recherche avancée</Link>
+            </div>
+        </section>
+        </>
     );
 };
 

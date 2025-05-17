@@ -6,7 +6,8 @@ const SearchResults = () => {
     const [results, setResults] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
-    const query = searchParams.get('query');
+    const params = new URLSearchParams(location.search);
+    const query = params.get('query') || params.get('q') || '';
 
     useEffect(() => {
         const fetchResults = async () => {
