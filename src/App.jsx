@@ -3,6 +3,8 @@ import Header from './components/header/header';
 import Highlight from './components/highlights/highlights';
 import Footer from './components/footer/footer';
 import ObjectDetail from './components/objectDetail/objectDetail';
+import SearchResults from './components/searchResults/searchResults.jsx';
+
 
 function App() {
     return (
@@ -11,6 +13,7 @@ function App() {
             <Routes>
                 <Route path="/" element={<Highlight />} />
                 <Route path="/object/:id" element={<ObjectDetail />} />
+                <Route path="/search" element={<SearchResults />} />
             </Routes>
             <Footer />
         </div>

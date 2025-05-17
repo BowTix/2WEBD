@@ -1,15 +1,16 @@
 import { useState } from 'react';
 import './searchBar.css';
-
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
+import { useNavigate } from 'react-router-dom';
 
-const SearchBar = ({ onSearch }) => {
+const SearchBar = () => {
     const [query, setQuery] = useState('');
+    const navigate = useNavigate();
 
     const handleSearch = () => {
         if (query.trim() !== '') {
-            onSearch(query);
+            navigate(`/search?query=${encodeURIComponent(query)}`);
         }
     };
 
@@ -21,14 +22,14 @@ const SearchBar = ({ onSearch }) => {
 
     return (
         <form className={`search-form ${query ? 'valid' : ''}`}
-            onSubmit={(e) => {
-                e.preventDefault();
-                handleSearch();
-            }}
-            noValidate
+              onSubmit={(e) => {
+                  e.preventDefault();
+                  handleSearch();
+              }}
+              noValidate
         >
-            <input type="search" placeholder="Rechercher" value={query} onChange={(e) => setQuery(e.target.value)} onKeyDown={handleKeyDown} required/>
-            <FontAwesomeIcon icon={faSearch} className="fa"/>
+            <input type="search" placeholder="Rechercher" value={query} onChange={(e) => setQuery(e.target.value)} onKeyDown={handleKeyDown} required />
+            <FontAwesomeIcon icon={faSearch} className="fa" />
         </form>
     );
 };
