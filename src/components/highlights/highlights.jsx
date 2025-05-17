@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 import './highlights.css';
 
 const Highlight = () => {
@@ -35,11 +36,11 @@ const Highlight = () => {
                             <h3>{art.title}</h3>
                             <p>Par {art.artistDisplayName || "Unknown Artist"}</p>
                             <p>{art.objectDate || "Unknown Date"}</p>
-                                {art.objectURL ? (
-                                    <a href={art.objectURL} target="_blank" rel="noopener noreferrer">En savoir plus</a>
-                                ) : (
-                                    <p>No URL available</p>
-                                )}
+                            {art.objectURL ? (
+                                <Link to={`/object/${art.objectID}`}>En savoir plus</Link>
+                            ) : (
+                                <p>No URL available</p>
+                            )}
                         </div>
                     </div>
                 ))}

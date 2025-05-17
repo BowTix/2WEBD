@@ -3,9 +3,9 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 2em;
+    padding: 1.5em;
     background-color: var(--khaki);
-    color: var(--black);
+    color: var(--white);
 }
 
 .header-left {
