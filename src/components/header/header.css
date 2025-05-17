@@ -5,13 +5,14 @@
     align-items: center;
     padding: 1.5em;
     background-color: var(--khaki);
-    color: var(--white);
 }
 
 .header-left {
     display: flex;
     align-items: center;
     gap: 1rem;
+    text-decoration: none;
+    color: var(--white);
 }
 
 .header-logo {
@@ -28,3 +29,5 @@
         display: none;
     }
 }
+
+
