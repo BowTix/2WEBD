@@ -1,0 +1,32 @@
+.header {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2em;
+    background-color: var(--khaki);
+    color: var(--black);
+}
+
+/* Regrouper logo + titre à gauche */
+.header-left {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.header-logo {
+    height: 50px;
+    display: block;
+}
+
+.header-title {
+    font-size: 2rem;
+}
+
+/* Responsive : masquer le titre sur mobile */
+@media (max-width: 600px) {
+    .header-title {
+        display: none;
+    }
+}

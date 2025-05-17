@@ -1,0 +1,21 @@
+:root{
+  --black: #000000;
+  --onyx: #393E46;
+  --khaki: #B6B09F;
+  --eggshell: #EAE4D5;
+  --white: #F2F2F2;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  width: 100%;
+  height: 100%;
+  font-family: 'Segoe UI', sans-serif;
+  background-color: var(--white);
+  color: var(--black);
+}

@@ -1,0 +1,6 @@
+.footer {
+    background-color: var(--onyx);
+    color: var(--white);
+    text-align: center;
+    padding: 1rem;
+}
