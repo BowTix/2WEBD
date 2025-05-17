@@ -60,7 +60,7 @@ const ObjectDetail = () => {
                 </section>
 
                 <section className="section object-section">
-                    <h3>Objet</h3>
+                    <h3>Œuvre</h3>
                     <p><strong>Matériau :</strong> {object.medium || 'Non spécifié'}</p>
                     <p><strong>Dimensions :</strong> {object.dimensions || 'Non spécifiées'}</p>
                     <p><strong>Géographie :</strong> {object.city || 'Inconnue'}, {object.country || 'Inconnu'}</p>

@@ -26,7 +26,7 @@ const Highlight = () => {
 
     return (
         <section className="highlight-section">
-            <h2>Objets à la une...</h2>
+            <h2>Œuvres à la une...</h2>
             <div className="highlight-grid">
                 {highlights.map((art) => (
                     <div className="highlight-card" key={art.objectID}>
