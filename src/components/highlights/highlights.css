@@ -72,6 +72,29 @@
     letter-spacing: 1px;
 }
 
+.advanced-search {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.advanced-search-link {
+    margin-bottom: 3em;
+    padding: 1em 2em;
+    background-color: var(--onyx);
+    color: var(--eggshell);
+    border-radius: 25px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    text-decoration: none;
+    transition: 0.5s ease-in-out;
+}
+
+.advanced-search-link:hover {
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    background-color: var(--khaki);
+    color: var(--white);
+}
+
 @media (max-width: 600px) {
     .highlight-section h2 {
         margin-bottom: 1em;

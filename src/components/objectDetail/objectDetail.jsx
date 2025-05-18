@@ -21,22 +21,28 @@ const ObjectDetail = () => {
 
     return (
         <div className="object-detail-container">
-            <div className="images-container">
-                {mainImage && (
-                    <div className="main-image-container">
-                        <img src={mainImage} alt={object.title} className="main-image" />
-                    </div>
-                )}
+            {!(object.primaryImage || (object.additionalImages && object.additionalImages.length > 0)) && (
+                <div className="no-image-message">Aucune image disponible</div>
+            )}
 
-                {object.additionalImages?.length > 0 && (
-                    <div className="thumbnail-slider">
-                        {[object.primaryImage, ...object.additionalImages].map((img, index) => (
-                            <img key={index} src={img} alt={`Miniature ${index}`} className={`thumbnail ${img === mainImage ? 'active' : ''}`} onClick={() => setMainImage(img)}
-                            />
-                        ))}
-                    </div>
-                )}
-            </div>
+            {(object.primaryImage || (object.additionalImages && object.additionalImages.length > 0)) && (
+                <div className="images-container">
+                    {mainImage && (
+                        <div className="main-image-container">
+                            <img src={mainImage} alt={object.title} className="main-image" />
+                        </div>
+                    )}
+
+                    {object.additionalImages?.length > 0 && (
+                        <div className="thumbnail-slider">
+                            {[object.primaryImage, ...object.additionalImages].map((img, index) => (
+                                <img key={index} src={img} alt={`Miniature ${index}`} className={`thumbnail ${img === mainImage ? 'active' : ''}`} onClick={() => setMainImage(img)}
+                                />
+                            ))}
+                        </div>
+                    )}
+                </div>
+            )}
 
             <div className="object-details">
                 <section className="section title-section">

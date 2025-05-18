@@ -1,0 +1,12 @@
+.chargement{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: calc(100vh - 151px);
+    width: 100vw;
+    font-size: 2em;
+    text-transform: capitalize;
+    font-style: italic;
+    color: var(--khaki);
+}
+

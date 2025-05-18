@@ -1,11 +1,14 @@
 import { useEffect, useState } from 'react';
 import { Link, useSearchParams } from 'react-router-dom';
+import './searchResults.css';
+import '../../App.css';
 
 const SearchResults = () => {
     const [searchParams] = useSearchParams();
     const [results, setResults] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
+    const [visibleCount, setVisibleCount] = useState(10);
 
     const query = searchParams.get('q') || searchParams.get('query') || '';
 
@@ -16,14 +19,12 @@ const SearchResults = () => {
 
                 const apiParams = new URLSearchParams();
 
-                // On ajoute tous les paramètres pertinents
                 for (const [key, value] of searchParams.entries()) {
                     if (value) {
                         apiParams.append(key, value);
                     }
                 }
 
-                // S'assurer que 'q' est bien présent
                 if (!apiParams.get('q')) {
                     apiParams.set('q', query);
                 }
@@ -38,14 +39,8 @@ const SearchResults = () => {
                     return;
                 }
 
-                const objectIDs = searchData.objectIDs.slice(0, 10); // Limite à 10 résultats
-
-                const objectPromises = objectIDs.map(id =>
-                    fetch(`https://collectionapi.metmuseum.org/public/collection/v1/objects/${id}`).then(res => res.json())
-                );
-
-                const objects = await Promise.all(objectPromises);
-                setResults(objects);
+                // On stocke tous les IDs pour pouvoir charger plus tard
+                setResults(searchData.objectIDs);
             } catch (err) {
                 setError('Une erreur est survenue.');
             } finally {
@@ -55,39 +50,78 @@ const SearchResults = () => {
 
         if (query) {
             fetchResults();
+            setVisibleCount(10); // reset au changement de recherche
         }
     }, [searchParams, query]);
 
-    if (loading) return <p>Chargement...</p>;
+    // Charger les objets à afficher
+    const [objects, setObjects] = useState([]);
+    useEffect(() => {
+        const fetchObjects = async () => {
+            if (results.length === 0) {
+                setObjects([]);
+                return;
+            }
+            setLoading(true);
+            try {
+                const idsToLoad = results.slice(0, visibleCount);
+                const objectPromises = idsToLoad.map(id =>
+                    fetch(`https://collectionapi.metmuseum.org/public/collection/v1/objects/${id}`).then(res => res.json())
+                );
+                const objs = await Promise.all(objectPromises);
+                setObjects(objs);
+            } catch {
+                setError('Une erreur est survenue.');
+            } finally {
+                setLoading(false);
+            }
+        };
+        fetchObjects();
+    }, [results, visibleCount]);
+
+    if (loading) return <div className="chargement">Chargement...</div>;
     if (error) return <p>{error}</p>;
 
     return (
-        <div>
+        <div className="search-results-container">
             <h1>Résultats pour "{query}"</h1>
             {results.length === 0 ? (
                 <p>Aucun résultat trouvé.</p>
             ) : (
-                <ul>
-                    {results.map(item => (
-                        <li key={item.objectID}>
-                            <h2>{item.title}</h2>
-                            {item.primaryImageSmall && (
-                                <img
-                                    src={item.primaryImageSmall}
-                                    alt={item.title}
-                                    style={{ maxWidth: '200px' }}
-                                />
-                            )}
-                            <p>{item.artistDisplayName}</p>
-                            <p>{item.objectDate}</p>
-                            {item.objectURL ? (
-                                <Link to={`/object/${item.objectID}`}>En savoir plus</Link>
-                            ) : (
-                                <p>No URL available</p>
-                            )}
-                        </li>
-                    ))}
-                </ul>
+                <>
+                    <ul className="search-results-list">
+                        {objects.map(item => (
+                            <li key={item.objectID} className="search-results-item">
+                                {item.primaryImageSmall ? (
+                                    <img
+                                        src={item.primaryImageSmall}
+                                        alt={item.title}
+                                    />
+                                ) : (
+                                    <div className="no-image">Aucune image disponible</div>
+                                )}
+                                <h2>{item.title}</h2>
+                                <p><strong>Artiste :</strong> {item.artistDisplayName || 'Inconnu'}</p>
+                                <p><strong>Date :</strong> {item.objectDate || 'Inconnue'}</p>
+                                {item.objectURL ? (
+                                    <Link to={`/object/${item.objectID}`}>En savoir plus</Link>
+                                ) : (
+                                    <p>(Pas de lien disponible)</p>
+                                )}
+                            </li>
+                        ))}
+                    </ul>
+                    {visibleCount < results.length && (
+                        <div style={{ textAlign: 'center', margin: '2em 0' }}>
+                            <button
+                                className="load-more-btn"
+                                onClick={() => setVisibleCount(c => c + 10)}
+                            >
+                                Charger plus
+                            </button>
+                        </div>
+                    )}
+                </>
             )}
         </div>
     );

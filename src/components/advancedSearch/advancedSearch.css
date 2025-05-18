@@ -1,0 +1,102 @@
+.form-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: calc(100vh - 151px);
+    background-color: var(--white);
+}
+
+.advanced-search-form {
+    max-width: 40vw;
+    padding: 4em 3em;
+    background: var(--silver);
+    border-radius: 5px;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.2);
+    display: flex;
+    flex-direction: column;
+}
+
+.advanced-search-form h2 {
+    text-align: center;
+    margin-bottom: 1em;
+    color: var(--onyx);
+    font-size: 2em;
+}
+
+.advanced-search-form label,
+.advanced-search-form legend {
+    color: var(--onyx);
+    margin-bottom: 1em;
+}
+
+.advanced-search-form select,
+.advanced-search-form input[type="text"],
+.advanced-search-form input[type="number"] {
+    width: 100%;
+    padding: 0.7em 1em;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background: #fff;
+    font-size: 1em;
+    margin-bottom: 1.5em;
+    transition: border 0.2s;
+}
+
+.advanced-search-form select:focus,
+.advanced-search-form input:focus {
+    border: 1px solid var(--khaki, #b5a642);
+    outline: none;
+}
+
+.advanced-search-form fieldset {
+    border: none;
+    padding: 0;
+    margin: 0.5em 0 0 0;
+    display: flex;
+    gap: 1.5em;
+    justify-content: space-around;
+}
+
+.advanced-search-form legend {
+    font-size: 1em;
+    font-weight: bold;
+    margin-bottom: 0.5em;
+}
+
+.advanced-search-form label input[type="checkbox"] {
+    margin-right: 0.5em;
+    accent-color: var(--onyx);
+}
+
+.advanced-search-form button[type="submit"] {
+    margin-top: 2em;
+    padding: 1em 2em;
+    background-color: var(--onyx);
+    color: var(--eggshell);
+    border-radius: 25px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    text-decoration: none;
+    transition: 0.5s ease-in-out;
+    border: none;
+}
+
+.advanced-search-form button[type="submit"]:hover {
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    background-color: var(--khaki);
+    color: var(--white);
+    cursor: pointer;
+}
+
+.error-box {
+    color: #b00020;
+    text-align: center;
+    font-weight: 600;
+    margin-top: 2em;
+}
+
+@media (max-width: 600px) {
+    .advanced-search-form {
+        padding: 1em;
+        max-width: 90vw;
+    }
+}

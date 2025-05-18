@@ -40,7 +40,7 @@ const Highlight = () => {
                             {art.objectURL ? (
                                 <Link to={`/object/${art.objectID}`}>En savoir plus</Link>
                             ) : (
-                                <p>No URL available</p>
+                                <p>Lien non disponible</p>
                             )}
                         </div>
                     </div>
@@ -48,8 +48,8 @@ const Highlight = () => {
             </div>
         </section>
         <section>
-            <div>
-                <Link to={`/advanced-search`}>Recherche avancée</Link>
+            <div className="advanced-search">
+                <Link to={`/advanced-search`} className="advanced-search-link">Recherche avancée</Link>
             </div>
         </section>
         </>

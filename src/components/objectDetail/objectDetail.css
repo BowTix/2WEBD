@@ -104,6 +104,15 @@
     text-decoration: underline;
 }
 
+.no-image-message {
+    width: 100%;
+    font-size: 1.2em;
+    text-align: center;
+    color: var(--khaki);
+    font-style: italic;
+    margin: 4em 0;
+}
+
 @media (max-width: 600px) {
     .thumbnail-slider {
         justify-content: flex-start;
