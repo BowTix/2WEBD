@@ -29,9 +29,11 @@
 .search-results-item img {
     width: 100%;
     height: auto;
+    max-height: 300px;
     border-radius: 4px;
-    object-fit: cover;
+    object-fit: contain;
     margin-bottom: 1em;
+    background: var(--white);
 }
 
 .search-results-item h2 {
@@ -70,6 +72,17 @@
     border-radius: 4px;
     margin-bottom: 1em;
     font-style: italic;
+}
+
+.no-results-message {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2em;
+    text-transform: capitalize;
+    font-style: italic;
+    color: var(--khaki);
+    margin: 5em;
 }
 
 .load-more-btn {

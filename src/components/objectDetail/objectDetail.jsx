@@ -70,6 +70,7 @@ const ObjectDetail = () => {
                     <p><strong>Matériau :</strong> {object.medium || 'Non spécifié'}</p>
                     <p><strong>Dimensions :</strong> {object.dimensions || 'Non spécifiées'}</p>
                     <p><strong>Géographie :</strong> {object.city || 'Inconnue'}, {object.country || 'Inconnu'}</p>
+                    <p><strong>Musée :</strong> {object.repository || 'Non spécifié'}</p>
                 </section>
 
                 <section className="section link-section">

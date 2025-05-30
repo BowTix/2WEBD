@@ -1,0 +1,47 @@
+.skeleton {
+    background: #f0f0f0;
+    animation: pulse 1.5s infinite;
+    min-height: 320px;
+}
+
+.skeleton-img {
+    width: 100%;
+    height: 200px;
+    background: #e0e0e0;
+    border-radius: 4px;
+    margin-bottom: 1em;
+}
+
+.skeleton-title {
+    width: 70%;
+    height: 22px;
+    background: #e0e0e0;
+    border-radius: 4px;
+    margin-bottom: 0.7em;
+}
+
+.skeleton-text {
+    width: 90%;
+    height: 16px;
+    background: #e0e0e0;
+    border-radius: 4px;
+    margin-bottom: 0.5em;
+}
+
+.skeleton-text.short {
+    width: 50%;
+}
+
+.skeleton-link {
+    width: 40%;
+    height: 18px;
+    background: #e0e0e0;
+    border-radius: 4px;
+    margin-top: 0.7em;
+}
+
+@keyframes pulse {
+    0% { opacity: 1; }
+    50% { opacity: 0.2; }
+    100% { opacity: 1; }
+}
