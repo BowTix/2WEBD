@@ -16,7 +16,6 @@ const SearchResults = () => {
     const query = searchParams.get('q') || searchParams.get('query') || '';
     const hasImages = searchParams.get('hasImages') === 'true';
 
-    // Chargement des IDs
     useEffect(() => {
         const fetchResults = async () => {
             try {
@@ -52,14 +51,12 @@ const SearchResults = () => {
         }
     }, [searchParams, query]);
 
-    // Chargement des objets
     useEffect(() => {
         const fetchObjects = async () => {
             if (results.length === 0) {
                 setObjects([]);
                 return;
             }
-            // Si on charge plus, on ne remet pas tout à loading
             const isLoadMore = objects.length > 0 && visibleCount > objects.length;
             if (isLoadMore) setLoadingMore(true);
             else setLoading(true);
@@ -90,7 +87,6 @@ const SearchResults = () => {
             }
         };
         fetchObjects();
-        // eslint-disable-next-line
     }, [results, visibleCount, hasImages]);
 
     if (error) return <p>{error}</p>;
@@ -108,9 +104,7 @@ const SearchResults = () => {
                         {objects.map(item => (
                             <li key={item.objectID} className="search-results-item">
                                 {item.primaryImageSmall ? (
-                                    <img
-                                        src={item.primaryImageSmall}
-                                        alt={item.title}
+                                    <img src={item.primaryImageSmall} alt={item.title}
                                     />
                                 ) : (
                                     <div className="no-image">Aucune image disponible</div>
@@ -131,14 +125,7 @@ const SearchResults = () => {
                     </ul>
                     {visibleCount < results.length && !loading && (
                         <div style={{ textAlign: 'center', margin: '2em 0' }}>
-                            <button
-                                type="button"
-                                className="load-more-btn"
-                                onClick={() => setVisibleCount(c => c + 10)}
-                                disabled={loadingMore}
-                            >
-                                Charger plus
-                            </button>
+                            <button type="button" className="load-more-btn" onClick={() => setVisibleCount(c => c + 10)} disabled={loadingMore}>Charger plus</button>
                         </div>
                     )}
                 </>

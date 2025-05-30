@@ -1,12 +1,37 @@
-# React + Vite
+# PROJET 2WEBD - ARTHECA
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Explorez les œuvres à la une du Metropolitan Museum of Art.
 
-Currently, two official plugins are available:
+<hr></hr>
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Prérequis
 
-## Expanding the ESLint configuration
+- [Node.js](https://nodejs.org/) (version 16 ou supérieure recommandée)
+- [npm](https://www.npmjs.com/) (installé avec Node.js)
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## Installation
+
+Clone le dépôt et installe les dépendances :
+```bash
+git clone https://github.com/BowTix/2WEBD
+cd <chemin-vers-notre-projet>
+npm install
+```
+
+Lancer le projet en développement
+```bash
+npm start
+```
+L’application sera accessible en localhost.
+
+Vous pouvez également accéder à une version en ligne via ce lien : [https://artheca.vercel.app/](https://artheca.vercel.app/)
+
+## Fonctionnalités
+
+- Recherche et affichage des œuvres à la une du Met
+- Détail des œuvres avec images, artiste, musée, etc.
+- Recherche avancée
+
+<hr></hr>
+
+Projet réalisé par Mathis Maureau et Hugo Perletti. En cas de problème, n'hésitez pas à nous contacter.

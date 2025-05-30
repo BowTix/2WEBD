@@ -58,9 +58,7 @@ const ObjectDetail = () => {
                     <p><strong>Biographie :</strong> {object.artistDisplayBio || 'Non disponible'}</p>
                     {object.artistWikidata_URL && (
                         <p>
-                            <a href={object.artistWikidata_URL} target="_blank" rel="noopener noreferrer">
-                                Voir sur Wikidata
-                            </a>
+                            <a href={object.artistWikidata_URL} target="_blank" rel="noopener noreferrer">Voir sur Wikidata</a>
                         </p>
                     )}
                 </section>
@@ -75,9 +73,7 @@ const ObjectDetail = () => {
 
                 <section className="section link-section">
                     <p>
-                        <a href={object.objectURL} target="_blank" rel="noopener noreferrer">
-                            Voir sur le site du Met
-                        </a>
+                        <a href={object.objectURL} target="_blank" rel="noopener noreferrer">Voir sur le site du Met</a>
                     </p>
                 </section>
             </div>

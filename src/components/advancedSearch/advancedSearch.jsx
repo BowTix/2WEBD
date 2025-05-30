@@ -67,60 +67,18 @@ const AdvancedSearch = () => {
         <section className="form-container">
             <form onSubmit={handleSubmit} className="advanced-search-form">
                 <h2>Recherche avancée</h2>
-                <input
-                    type="text"
-                    name="query"
-                    placeholder="Mot-clé"
-                    value={formValues.query}
-                    onChange={handleChange}
-                />
+                <input type="text" name="query" placeholder="Mot-clé" value={formValues.query} onChange={handleChange}/>
                 <div className="form-row">
-                    <input
-                        type="text"
-                        name="artistOrCulture"
-                        placeholder="Artiste ou culture"
-                        value={formValues.artistOrCulture}
-                        onChange={handleChange}
-                    />
-                    <input
-                        type="text"
-                        name="medium"
-                        placeholder="Medium (ex: Silk|Quilts)"
-                        value={formValues.medium}
-                        onChange={handleChange}
-                    />
+                    <input type="text" name="artistOrCulture" placeholder="Artiste ou culture" value={formValues.artistOrCulture} onChange={handleChange}/>
+                    <input type="text" name="medium" placeholder="Medium (ex: Silk|Quilts)" value={formValues.medium} onChange={handleChange}/>
                 </div>
                 <div className="form-row">
-                    <input
-                        type="text"
-                        name="geoLocation"
-                        placeholder="Pays / région"
-                        value={formValues.geoLocation}
-                        onChange={handleChange}
-                    />
-                    <input
-                        type="number"
-                        name="departmentId"
-                        placeholder="ID du département"
-                        value={formValues.departmentId}
-                        onChange={handleChange}
-                    />
+                    <input type="text" name="geoLocation" placeholder="Pays / région" value={formValues.geoLocation} onChange={handleChange}/>
+                    <input type="number" name="departmentId" placeholder="ID du département" value={formValues.departmentId} onChange={handleChange}/>
                 </div>
                 <div className="form-row">
-                    <input
-                        type="number"
-                        name="dateBegin"
-                        placeholder="Date de début"
-                        value={formValues.dateBegin}
-                        onChange={handleChange}
-                    />
-                    <input
-                        type="number"
-                        name="dateEnd"
-                        placeholder="Date de fin"
-                        value={formValues.dateEnd}
-                        onChange={handleChange}
-                    />
+                    <input type="number" name="dateBegin" placeholder="Date de début" value={formValues.dateBegin} onChange={handleChange}/>
+                    <input type="number" name="dateEnd" placeholder="Date de fin" value={formValues.dateEnd} onChange={handleChange}/>
                 </div>
 
                 <fieldset>
